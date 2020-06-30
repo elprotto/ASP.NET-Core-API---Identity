@@ -32,10 +32,10 @@ namespace ExampleProject
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>(options => {
+            services.AddDefaultIdentity<UserModel>(options => {
                 options.SignIn.RequireConfirmedAccount = true;
-            })
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            }).AddRoles<IdentityRole>()
+              .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddMvc();
         }

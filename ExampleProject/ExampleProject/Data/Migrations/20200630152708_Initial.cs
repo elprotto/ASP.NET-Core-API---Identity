@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ExampleProject.Migrations
+namespace ExampleProject.Data.Migrations
 {
     public partial class Initial : Migration
     {
@@ -42,14 +42,14 @@ namespace ExampleProject.Migrations
                     Name = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedName = table.Column<string>(maxLength: 256, nullable: true),
                     ConcurrencyStamp = table.Column<string>(nullable: true),
-                    UserId = table.Column<string>(nullable: true)
+                    UserModelId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_AspNetRoles_AspNetUsers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_AspNetRoles_AspNetUsers_UserModelId",
+                        column: x => x.UserModelId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -174,9 +174,9 @@ namespace ExampleProject.Migrations
                 filter: "[NormalizedName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AspNetRoles_UserId",
+                name: "IX_AspNetRoles_UserModelId",
                 table: "AspNetRoles",
-                column: "UserId");
+                column: "UserModelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetUserClaims_UserId",

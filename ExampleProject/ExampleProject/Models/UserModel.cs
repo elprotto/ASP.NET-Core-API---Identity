@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ExampleProject.Models
 {
-    public class User: IdentityUser
+    public class UserModel: IdentityUser
     {
         public int CedulaId { get; set; }
         public string MyCustomProperty { get; set; }
